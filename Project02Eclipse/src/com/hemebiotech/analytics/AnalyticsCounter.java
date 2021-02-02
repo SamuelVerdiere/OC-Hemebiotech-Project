@@ -1,43 +1,33 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
-	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("C:\\Users\\ADMIN\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\resources\\symptoms.txt"));
-		String line = reader.readLine();
+	public static void main(String args[]) throws FileNotFoundException {
 
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+		File file = new File("C:\\Users\\ADMIN\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\resources\\symptoms.txt");
+		Scanner sc = new Scanner(file);
+		TreeMap<String, Integer> myMap = new TreeMap<String, Integer>();   //on initialise fichier, scanner et Treemap
 
-			line = reader.readLine();	// get another symptom
+		while (sc.hasNext()) {
+			String m = sc.nextLine();
+			String[] input = m.split("[ \n\t\r,.;:!?(){}]");  //on lance une boucle qui va lire des lignes de String
+
+			for (int f = 0; f < input.length; f++) {
+				String key = input[f].toUpperCase();  			// la clé sera retournée en majuscule
+				if(input[f].length() >1) {  					// s'il reste des lignes
+					if (myMap.get(key) == null) {
+						myMap.put(key, 1);  			//si la valeur du String est nulle on la passe à 1
+					} else {
+						myMap.put(key, (myMap.get(key)) +1);  // si la valeur n'est pas nulle on ajoute 1
+					}
+				}
+			}
 		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		for (String entry : myMap.keySet()) {
+			System.out.println(entry + " : " + myMap.get(entry));   //on affiche le résultat, symptôme : compte
+		}
 	}
 }
