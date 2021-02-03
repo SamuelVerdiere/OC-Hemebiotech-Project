@@ -1,5 +1,22 @@
 package com.hemebiotech.analytics;
 
+import java.util.*;
+import java.io.File;
+
+public class ReadSymptomDataFromFile extends AnalyticsCounter {
+    static Iterator it = myMap.entrySet().iterator();
+    static TreeMap<String, Integer> readDatas(File file) {
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            System.out.println(pair.getKey() + " " + pair.getValue());
+        }
+        return myMap;
+    }
+}
+
+
+/*
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +27,7 @@ import java.util.List;
  * Simple brute force implementation
  *
  */
-public class ReadSymptomDataFromFile implements ISymptomReader {
+/* public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
 	
@@ -18,7 +35,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 */
-	public ReadSymptomDataFromFile (String filepath) {
+/*	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
 	
@@ -44,4 +61,4 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		return result;
 	}
 
-}
+}*/
