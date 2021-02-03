@@ -81,10 +81,12 @@ stiff neck
 inflamation
 blurred vision
 fever
+anemia
 dizziness
 arrhythmias
 rash
 rash
+anemia
 fever
 dry mouth
 fever
@@ -92,6 +94,7 @@ high blood pressure
 stiff neck
 dialated pupils
 cough
+anemia
 inflamation
 low blood pressure
 anxiety

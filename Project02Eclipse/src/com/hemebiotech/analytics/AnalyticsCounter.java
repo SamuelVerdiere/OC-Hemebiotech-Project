@@ -5,15 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class AnalyticsCounter {
-	public static Scanner sc;
-	public static File file;
-	public static TreeMap<String, Integer> myMap = new TreeMap<String, Integer>();
 
-public static void main(String[] args) throws FileNotFoundException {
-	File file = new File("C:\\\\Users\\\\ADMIN\\\\IdeaProjects\\\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\\\Project02Eclipse\\\\src\\\\resources\\\\symptoms.txt");
-	sc = new Scanner(file);
-	ReadSymptomDataFromFile.readDatas(file);
-}
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File("C:\\\\Users\\\\ADMIN\\\\IdeaProjects\\\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\\\Project02Eclipse\\\\src\\\\resources\\\\symptoms.txt");
+		ISymptomReader symptomReader = new ISymptomReader(file);
+		symptomReader.readDatas();
+	}
 }
 
 /*

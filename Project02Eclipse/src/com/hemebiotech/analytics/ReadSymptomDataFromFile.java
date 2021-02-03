@@ -3,17 +3,17 @@ package com.hemebiotech.analytics;
 import java.util.*;
 import java.io.File;
 
-public class ReadSymptomDataFromFile extends AnalyticsCounter {
-    static Iterator it = myMap.entrySet().iterator();
-    static TreeMap<String, Integer> readDatas(File file) {
+/*public class ReadSymptomDataFromFile extends AnalyticsCounter { */
+/*    static Iterator it = myMap.entrySet().iterator();           // l'élément it va utiliser les données de myMap pour créer une vue d'ensemble de tous les éléments
+    static TreeMap<String, Integer> readDatas(File file) {      //
 
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            System.out.println(pair.getKey() + " " + pair.getValue());
+        while (it.hasNext()) {          //tant qu'il y a un élément dans l'ensemble
+            Map.Entry pair = (Map.Entry) it.next();     // on voit chaque paire suivante de l'ensemble
+            System.out.println(pair.getKey() + " " + pair.getValue()); // on affiche les valeurs de la paire, clé et valeur
         }
-        return myMap;
+        return myMap;   //il faut une valeur return
     }
-}
+}*/
 
 
 /*
