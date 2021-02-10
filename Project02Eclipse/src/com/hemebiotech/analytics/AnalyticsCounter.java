@@ -2,16 +2,45 @@ package com.hemebiotech.analytics;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.io.IOException;
 
 public class AnalyticsCounter {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
+
 		File file = new File("C:\\\\Users\\\\ADMIN\\\\IdeaProjects\\\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\\\Project02Eclipse\\\\src\\\\resources\\\\symptoms.txt");
 		ISymptomReader symptomReader = new ISymptomReader(file);
 		symptomReader.readDatas();
+
+		File file2 = new File("C:\\Users\\ADMIN\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\result.out");
+		ReadSymptomDataFromFile rsff = new ReadSymptomDataFromFile(file2);
+		rsff.WriteDatas(symptomReader.getMyMap());
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 import java.io.File;

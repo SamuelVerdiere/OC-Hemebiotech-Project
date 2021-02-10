@@ -1,5 +1,6 @@
 package com.hemebiotech.analytics;
 
+import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -20,7 +21,7 @@ class ISymptomReader extends AnalyticsCounter {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        this.myMap = new TreeMap<String, Integer>();   //on initialise fichier, scanner et Treemap - avec this. on fait référence à l'instance de classe
+        this.myMap = new TreeMap<>();   //on initialise fichier, scanner et Treemap - avec this. on fait référence à l'instance de classe
 
         while (sc.hasNext()) {                  //tant qu'il y a une ligne à lire
             String m = sc.nextLine();
@@ -40,6 +41,9 @@ class ISymptomReader extends AnalyticsCounter {
         for (String entry : this.myMap.keySet()) {
             System.out.println(entry + " : " + this.myMap.get(entry));   //on affiche le résultat, symptôme : compte
         }
+    }
+    public TreeMap<String, Integer> getMyMap() {
+        return myMap;
     }
 }
 
