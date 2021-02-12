@@ -9,12 +9,12 @@ import java.util.TreeMap;
 
 class ReadSymptomOnFile implements CanReadable {
 
-    //Declare & initialize file, path, TreeMap and constructor for this.file
+
     /**
      * The file variable named file.
      * <p>It can only be accessed from within this class.</p>
      */
-
+    //Declare & initialize file, path, TreeMap and constructor for this.file
     private File file;
 
     /**

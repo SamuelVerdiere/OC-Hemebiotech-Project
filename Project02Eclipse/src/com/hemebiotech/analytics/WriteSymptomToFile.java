@@ -17,7 +17,6 @@ class WriteSymptomToFile implements CanWritable {
      */
     //declare & initialize fil2, its output path and myMap
     private File file2 ;
-    /*static String outputFilePath = "C:\\Users\\Mogwa\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\result.out";*/
 
     /**
      * The TreeMap named myMap.
