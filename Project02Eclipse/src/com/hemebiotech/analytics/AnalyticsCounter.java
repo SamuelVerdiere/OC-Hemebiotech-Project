@@ -1,77 +1,55 @@
 package com.hemebiotech.analytics;
 
+import resources.properties;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
+/**
+ * <b> AnalyticsCounter is the class containing "main" method.</b>
+ * <p>
+ *     The program will execute these actions :
+ *     <ul>
+ *         <li>Read a text file.</li>
+ *         <li>Sort and count all symptoms.</li>
+ *         <li>Write the results; "symptoms : occurences".</li>
+ *     </ul>
+ * </p>
+ *<p> The program will also write its properties.</p>
+ *
+ *
+ * @author Samuel Verdière
+ * @Version 1.0
+ */
 
 public class AnalyticsCounter {
 
 	public static void main(String[] args) {
+/**
+ * <p>The code that will read the file.</p>
+ * <p>We indicate the path of the file that must be read.</p>
+ * <p>Then we effectively read them.</p>
+ * @see readDatas();
+ */
 
-		File file = new File("C:\\\\Users\\\\ADMIN\\\\IdeaProjects\\\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\\\Project02Eclipse\\\\src\\\\resources\\\\symptoms.txt");
-		ISymptomReader symptomReader = new ISymptomReader(file);
+		//Declare and initialize File with path and method that will read (& count) data
+		File file = new File(ReadSymptomOnFile.inputFilePath);
+		ReadSymptomOnFile symptomReader = new ReadSymptomOnFile(file);
 		symptomReader.readDatas();
+/**
+ * <p>The code that will write the results.</p>
+ * <p>We indicate the path of the file in which to write.</p>
+ * <p>Then effectively write them.</p>
+ * @see WriteDatas();
+ */
 
-		File file2 = new File("C:\\Users\\ADMIN\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\result.out");
-		ReadSymptomDataFromFile rsff = new ReadSymptomDataFromFile(file2);
-		rsff.WriteDatas(symptomReader.getMyMap());
+		//Declare and initialize File2 that will write results as expected
+		File file2 = new File(WriteSymptomToFile.outputFilePath);
+		WriteSymptomToFile wstf = new WriteSymptomToFile(file2);
+		wstf.WriteDatas(symptomReader.getMyMap());
+/**
+ * Read properties from a file.
+ */
+		//create properties
+		properties.Config();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-
-public class AnalyticsCounter {
-	public static void main(String args[]) throws FileNotFoundException {
-
-		File file = new File("C:\\Users\\ADMIN\\IdeaProjects\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\resources\\symptoms.txt");
-		Scanner sc = new Scanner(file);
-		TreeMap<String, Integer> myMap = new TreeMap<String, Integer>();   //on initialise fichier, scanner et Treemap
-
-		while (sc.hasNext()) {
-			String m = sc.nextLine();
-			String[] input = m.split("[ \n\t\r,.;:!?(){}]");  //on lance une boucle qui va lire des lignes de String
-
-			for (int f = 0; f < input.length; f++) {
-				String key = input[f].toUpperCase();  			// la clé sera retournée en majuscule
-				if(input[f].length() >1) {  					// s'il reste des lignes
-					if (myMap.get(key) == null) {
-						myMap.put(key, 1);  			//si la valeur du String est nulle on la passe à 1
-					} else {
-						myMap.put(key, (myMap.get(key)) +1);  // si la valeur n'est pas nulle on ajoute 1
-					}
-				}
-			}
-		}
-		for (String entry : myMap.keySet()) {
-			System.out.println(entry + " : " + myMap.get(entry));   //on affiche le résultat, symptôme : compte
-		}
-	}
-}
-*/
